@@ -1,0 +1,44 @@
+<div class="container-fluid center ">
+    <h1>COVID-19 CORONAVIRUS PANDEMIC </h1>
+    <p class="update"> Last updated: February 28, 2021, 17:15 GMT+4</p>
+    <p class="referenceinfo">The day is reset after midnight GMT+0. The list of countries and their regional classification is based on the United Nations Geoscheme.</p>
+
+</div>
+<div class="container row">
+  <button class="btn btn-primary btn-sm w-auto"
+          (click)="showOrhide()"> {{showList? "Hide" : "Show"}} List</button>
+  <div class=" col-4 ">
+    <input type="search"
+    class="form-control"
+    placeholder="Search by country, cases, deaths..."
+    [(ngModel)]="searchValue"/>
+</div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Top 10</th>
+        <th scope="col">Country</th>
+        <th scope="col">Total Cases</th>
+        <th scope="col">Total Recovered</th>
+        <th scope="col">Total Deaths</th>
+        <th scope="col">More</th>        
+      </tr>
+    </thead>
+    <tbody *ngIf="showList">
+      <tr *ngFor="let obj of filteredList ">
+        <td>
+            <img src="{{obj.flagUrl}}" alt="{{obj.name}}">
+        </td>
+        <td>{{obj.name}}</td>
+        <td>{{obj.caseTotal}}</td>
+        <td>{{obj.recoveredTotal}}</td>
+        <td>{{obj.deathsTotal}}</td>
+        <td>
+          <button class="btn btn-primary" (click)='ifchanged()'>See More...</button>
+          <app-details></app-details>
+        </td>
+      </tr>
+    </tbody>
+  </table>
