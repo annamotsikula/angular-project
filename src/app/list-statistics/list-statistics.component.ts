@@ -1,4 +1,3 @@
-import { rendererTypeName } from "@angular/compiler";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Statistics } from './list-statistics'; 
 import { ListService } from "./list-statistics.service";
