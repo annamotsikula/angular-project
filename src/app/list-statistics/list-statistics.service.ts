@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Statistics } from "./list-statistics"
+import { IStatistics } from "./list-statistics"
 
 @Injectable({
     providedIn: 'root',
 })
 export class ListService {
-    getList() : Statistics[] {
+    getList() : IStatistics[] {
         return [
             {
                 flagUrl:"https://www.countryflags.io/us/flat/64.png",

@@ -1,9 +1,15 @@
 <div class="card" style="width: 20rem;">
     <div class="card-body">
-      <img src="{{article.urlToImage}}" class="card-img-top img-responsive" alt="No Preview Photo">
+      <img src="{{article?.urlToImage}}"
+       class="card-img-top img-responsive" 
+       alt="No Preview Photo" 
+       [routerLink]="[ '/infodetails' , article?.title]">
       <h5 class="card-title">{{article.title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{article.author}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Author: {{article.author}}</h6>
       <p class="card-text">{{article.content}}</p>
-      <a href="{{article.url}}" target="_blank" class="card-link">Source</a>
+      <p> {{article.publishedAt.slice(0,10)}}</p>
+      <a href="{{article.url}}" target="_blank" class="card-link">Source Link</a>
+      <!-- <a [routerLink]="[ '/infodetails' ]"  class="card-link">More...</a> -->
+      
     </div>
   </div>

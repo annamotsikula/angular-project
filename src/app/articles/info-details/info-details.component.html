@@ -1,0 +1,15 @@
+<app-navigation></app-navigation>
+<div class='row' *ngIf=article>
+    <div class="col-6 mx-auto">
+        <h5 class="card-title">{{article.title}}</h5>
+        <img [src]="article.urlToImage"
+         class="card-img-top " 
+         alt="No Preview Photo">
+        <p> <b>Release date: </b>{{article.publishedAt.slice(0,10)}}</p>
+        <h6 class="card-subtitle mb-2 text-muted">Author: {{article.author}}</h6>
+        <p class="card-text">{{article.content}}</p>
+        
+    </div>
+
+
+</div>

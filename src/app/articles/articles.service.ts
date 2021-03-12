@@ -10,11 +10,15 @@ import { myKey, baseUrl } from "../../config";
 export class ArticleService {
     private _baseUrl: string = baseUrl;
     private _key: string= myKey;
+    private theme: string="covid19";
+    private releaseDate: string = '2021-03-10'
+
 
     constructor(private http:HttpClient) {}
 
     getAllArticles():Observable<IResponse>{
-        return this.http.get<IResponse>(`${this._baseUrl}/everything?q=covid19&apiKey=${this._key}`);
+        return this.http.get<IResponse>(`${this._baseUrl}/everything?q=${this.theme}&from${this.releaseDate}&sortBy=popularity&apiKey=${this._key}`);
+        
     }
    
 }

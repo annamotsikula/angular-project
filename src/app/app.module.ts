@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { CardsComponent } from './articles/cards/cards.component';
+import { InfoDetailsComponent } from './articles/info-details/info-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,7 @@ import { CardsComponent } from './articles/cards/cards.component';
     NavigationComponent,
     ArticlesComponent,
     CardsComponent,
+    InfoDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,12 +51,13 @@ import { CardsComponent } from './articles/cards/cards.component';
         component: ListStatistics,
       },
       {
+        path: 'infodetails/:title',
+        component: InfoDetailsComponent,
+      },      
+      {
         path: '**',
         component: ErrorpageComponent,
       },
-      
-      
-
     ])
   ],
   providers: [],
