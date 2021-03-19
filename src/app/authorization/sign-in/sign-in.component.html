@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="my-4 text-center">
+        <h1>Sign In</h1>
+    </div>
+    <div class="col-6 mx-auto">
+        <form #signIn="ngForm" (ngSubmit)="onSubmit(signIn)">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email"
+                        class="form-control" 
+                        id="email" 
+                        [(ngModel)]="signInform.email">
+
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" 
+                        class="form-control" 
+                        name="password" 
+                        id="password"
+                        [(ngModel)]="signInform.password">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" 
+                        class="form-check-input"
+                        [value]="true" 
+                        id="rememberUser"
+                        [(ngModel)]="signInform.rememberUser">
+                <label class="form-check-label" 
+                        for="rememberUser">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>

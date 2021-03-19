@@ -14,14 +14,11 @@ export class InfoDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const title = this.route.snapshot.paramMap.get('title');
-    this._service.getAllArticles().subscribe((res: IResponse) => {
-      if (res.status ==='ok' && title) {
-        const currentArticle: IArticle = res.articles.find((item: IArticle) => {
-          return item.title.match(title);
-        })
-        this.article = currentArticle;
-      }
-    })
+    if(title){
+      this._service.getOne(title).subscribe((res: IResponse) => {
+        this.article = res.articles[0];
+      });
+    }  
 
     
   }
