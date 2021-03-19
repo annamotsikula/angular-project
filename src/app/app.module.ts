@@ -1,34 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListStatistics } from './list-statistics/list-statistics.component';
-import { DetailsComponent } from './details/details.component';
+
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { CardsComponent } from './articles/cards/cards.component';
+
+import { ArticleModule } from './articles/article.module';
+import { StatsModule } from './list-statistics/stats.module';
+import { AuthorizationModule } from './authorization/authorization.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    ListStatistics,
-    DetailsComponent,
     ErrorpageComponent,
     HomeComponent,
     NavigationComponent,
-    ArticlesComponent,
-    CardsComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
+    ArticleModule,
+    StatsModule,
+    AuthorizationModule,
     RouterModule.forRoot([
       {
         path: 'home',
@@ -40,21 +42,12 @@ import { CardsComponent } from './articles/cards/cards.component';
         pathMatch: 'full',
       },
       {
-        path: 'error',
-        component: ErrorpageComponent,
-      },
-      {
-        path: 'statistics',
-        component: ListStatistics,
-      },
-      {
         path: '**',
         component: ErrorpageComponent,
       },
-      
-      
-
-    ])
+    ]),
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

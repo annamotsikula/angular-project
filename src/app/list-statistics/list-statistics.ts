@@ -1,4 +1,4 @@
-export interface Statistics {
+export interface IStatistics {
     flagUrl: string,
     name: string,
     caseTotal: string,
@@ -7,3 +7,4 @@ export interface Statistics {
     detailInfo: any
 
 }
+

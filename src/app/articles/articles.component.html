@@ -1,16 +1,63 @@
 <section class="container"> 
-<div class="card mt-2">
-    <div class="card-header">
-      <h3> Latest News </h3>
+  <div class="card mt-2">
+    <div class='col-12'>
+      <div class="card-header">
+          <h3> Filter </h3>
+      </div>
     </div>
-    <div class="row">
-<app-cards class="col-4" *ngFor="let article of wholeInfo" [article]="article"></app-cards>
+    
+      <form class="row m-3" #filterForm="ngForm" (ngSubmit)="Onsubmit(filterForm)"> 
+        <div class="mb-3 w-50 justify-content-center">
+          <label for="qInTitle" class="form-label">Search by</label>
+          <input type="text" class="form-control" id="qInTitle" name="qInTitle" [(ngModel)]="formFilter.qInTitle">
+        </div>
+        <div class="mb-3 col-4 w-25">
+          <label for="pageSize" class="form-label">Content Number</label>
+          <input type="number" class="form-control" name="pageSize" id="pageSize" [(ngModel)]="formFilter.pageSize">
+        </div>
+        <div class="mb-3 col-4 w-25">
+          <label for="page" class="form-label">Page No.</label>
+          <input type="number" class="form-control" name="page" id="page" [(ngModel)]="formFilter.page">
+        </div>
+        <div class="mb-3 col-4 w-25">
+          <label for="from" class="form-label">From:</label>
+          <input type="date" class="form-control" name="from" id="from" [(ngModel)]="formFilter.from">
+        </div>
+        <div class="mb-3 col-4 w-25">
+          <label for="to" class="form-label">To:</label>
+          <input type="date" class="form-control" name="to" id="to" [(ngModel)]="formFilter.to">
+        </div>
+        <div class="mb-3 col-4 w-25">
+          <label for="sortBy" class="form-label">Sort By:</label>
+          <select class="form-select" name="sortBy" [(ngModel)]="formFilter.sortBy">
+            <option value="popularity">Popularity</option>
+            <option value="relevancy">Relevancy</option>
+            <option value="publishedAt">Publihed At</option>
+          </select>
+        </div>
+        <div class="mt-4 col-4 w-25">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
+      </form>
+      <!-- {{ formFilter | json }} -->
+     
+    
 
-    </div>
+  
+  </div>
+  
+  
+  <div class="card mt-2">
+      <div class="card-header">
+        <h3> Latest News </h3>
+      </div>
+      
+      <div class="row">
+        <app-cards class="col-4 mt-2" *ngFor="let article of wholeInfo" [article]="article"></app-cards>
 
-
-</div>
-
+      </div>
+  </div>
 </section>
 
 

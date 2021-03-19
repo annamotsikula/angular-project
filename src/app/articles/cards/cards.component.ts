@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IArticle } from '../articles';
+import {ActivatedRoute }from '@angular/router'
 
 @Component({
   selector: 'app-cards',
@@ -11,7 +12,7 @@ export class CardsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.article)
+    // console.log(this.article)
   }
 
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { Statistics } from './list-statistics'; 
+import { Component, OnInit, } from "@angular/core";
+import { IStatistics } from './list-statistics'; 
 import { ListService } from "./list-statistics.service";
 
 
@@ -13,9 +13,8 @@ import { ListService } from "./list-statistics.service";
 export class ListStatistics implements OnInit {
     private searchPrivate: string = "";
     showList: boolean = true;
-    filteredList: Statistics [] = [];
-    countryList: Statistics[] = [];
-    // @ViewChild(DetailsComponent);
+    filteredList: IStatistics [] = [];
+    countryList: IStatistics[] = [];
     constructor(private _listService: ListService ) {
         
     }

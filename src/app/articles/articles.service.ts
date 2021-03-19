@@ -10,11 +10,14 @@ import { myKey, baseUrl } from "../../config";
 export class ArticleService {
     private _baseUrl: string = baseUrl;
     private _key: string= myKey;
-
+ 
     constructor(private http:HttpClient) {}
 
-    getAllArticles():Observable<IResponse>{
-        return this.http.get<IResponse>(`${this._baseUrl}/everything?q=covid19&apiKey=${this._key}`);
+    getAllArticles(theme:string):Observable<IResponse>{
+        return this.http.get<IResponse>(`${this._baseUrl}/everything?&apiKey=${this._key}&${theme}`);
+        
     }
-   
+    getOne(infoID: string): Observable<IResponse>{
+        return this.http.get<IResponse>(`${this._baseUrl}/everything?&apiKey=${this._key}&qInTitle=${infoID}&pageSize=1&page=1`)
+    }
 }
