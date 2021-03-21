@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ArticleModule } from './articles/article.module';
 import { StatsModule } from './list-statistics/stats.module';
 import { AuthorizationModule } from './authorization/authorization.module';
+import { ArticleResolver } from './articles/article-resolver.service';
+import { ArticleInterceptor } from './articles/article-interceptor';
 
 
 @NgModule({
@@ -35,7 +37,10 @@ import { AuthorizationModule } from './authorization/authorization.module';
       {
         path: 'home',
         component: HomeComponent,
-      },
+        resolve: { 
+          responseOfArticles: ArticleResolver
+        }
+    },
       {
         path: '',
         redirectTo: 'home',
@@ -49,7 +54,7 @@ import { AuthorizationModule } from './authorization/authorization.module';
     
     
   ],
-  providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {
