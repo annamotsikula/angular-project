@@ -3,6 +3,7 @@ import { ArticleService } from './articles.service';
 import {IResponse, IArticle} from './articles';
 import { NgForm } from "@angular/forms";
 import { FormsFilter } from '../data/filter-data.interface';
+import {ActivatedRoute} from '@angular/router'
 
 
 @Component({
@@ -18,10 +19,13 @@ export class ArticlesComponent implements OnInit {
     page: 1
 
   };
-  constructor(private _ArticleService: ArticleService) { }
+  constructor(private _ArticleService: ArticleService, private _router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.newTheme();
+    // this.newTheme();
+    const result: IResponse = this._router.snapshot.data['responseOfArticles'];
+
+    this.wholeInfo = result.articles;
   }
   private newTheme() {
     const theme: string = new URLSearchParams(this.formFilter as any).toString();
