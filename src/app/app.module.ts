@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +13,13 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ArticleModule } from './articles/article.module';
 import { StatsModule } from './list-statistics/stats.module';
 import { AuthorizationModule } from './authorization/authorization.module';
+import { CoreModule } from './core/core.module';
+
 import { ArticleResolver } from './articles/article-resolver.service';
+import { responseInterceptor } from './core/response.interceptor';
+import { cacheInterceptor } from './core/cache.interceptor';
+import { AuthorizationInterceptor } from './core/authorization.interceptor';
+
 
 
 
@@ -28,9 +34,9 @@ import { ArticleResolver } from './articles/article-resolver.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AuthorizationModule,
     ArticleModule,
     StatsModule,
-    AuthorizationModule,
     RouterModule.forRoot([
       {
         path: 'home',
@@ -49,7 +55,26 @@ import { ArticleResolver } from './articles/article-resolver.service';
         component: ErrorpageComponent,
       },
     ]),
+    CoreModule,
+    
   ], 
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: responseInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: cacheInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

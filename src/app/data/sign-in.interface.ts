@@ -3,3 +3,7 @@ export interface SignInForm {
     password: string,
     rememberUser?: boolean,
 }
+
+export interface LogInResponse {
+    token: string,
+}
