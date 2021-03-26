@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +14,7 @@ import { ArticleModule } from './articles/article.module';
 import { StatsModule } from './list-statistics/stats.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { ArticleResolver } from './articles/article-resolver.service';
-import { ArticleInterceptor } from './articles/article-interceptor';
+
 
 
 @NgModule({
@@ -23,8 +23,6 @@ import { ArticleInterceptor } from './articles/article-interceptor';
     ErrorpageComponent,
     HomeComponent,
     NavigationComponent,
-    
-   
   ],
   imports: [
     BrowserModule,
@@ -51,10 +49,7 @@ import { ArticleInterceptor } from './articles/article-interceptor';
         component: ErrorpageComponent,
       },
     ]),
-    
-    
-  ],
-  
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule {

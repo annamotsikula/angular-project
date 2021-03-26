@@ -6,7 +6,8 @@ export interface FormsFilter {
     pageSize: number,
     sortBy?: SortBy,
     from?: string,
-    to?: string
+    to?: string,
+    language?: string,
 
 
 }

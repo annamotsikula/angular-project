@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
 
 import { ListStatistics } from '../list-statistics/list-statistics.component';
 import { DetailsComponent } from '../details/details.component';
