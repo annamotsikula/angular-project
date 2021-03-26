@@ -9,6 +9,7 @@ import { CardsComponent } from './cards/cards.component';
 import { ArticleResolver } from "./article-resolver.service"
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ArticleInterceptor } from './article-interceptor';
+import { responseInterceptor } from './response.interceptor';
 
 
 
@@ -41,6 +42,11 @@ import { ArticleInterceptor } from './article-interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ArticleInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: responseInterceptor,
       multi: true
     }
   ],
