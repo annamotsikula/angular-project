@@ -6,14 +6,14 @@ import { myKey } from 'src/config';
     providedIn: 'root',
   })
   export class ArticleInterceptor implements HttpInterceptor {
-      intercept(request: HttpRequest<any>, handler: HttpHandler): Observable<HttpEvent<any>> {
+      intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
           console.log('articleInterceptor', request.url);
           const requestCloned : HttpRequest<any> = request.clone({
               setHeaders: {
-                  Authorization: myKey,
+                'X-Api-Key': myKey,
               }
                
           });
-          return handler.handle(requestCloned);
+          return next.handle(requestCloned);
       }
   }

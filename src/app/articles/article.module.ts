@@ -9,7 +9,9 @@ import { CardsComponent } from './cards/cards.component';
 import { ArticleResolver } from "./article-resolver.service"
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ArticleInterceptor } from './article-interceptor';
-import { responseInterceptor } from './response.interceptor';
+// import { responseInterceptor } from '../core/response.interceptor';
+// import { cacheInterceptor } from '../core/cache.interceptor';
+
 
 
 
@@ -24,7 +26,7 @@ import { responseInterceptor } from './response.interceptor';
   imports: [
     CommonModule,
     FormsModule,
-     RouterModule.forChild([
+    RouterModule.forChild([
       {
         path: 'articles/',
         component: ArticlesComponent,
@@ -44,11 +46,7 @@ import { responseInterceptor } from './response.interceptor';
       useClass: ArticleInterceptor,
       multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: responseInterceptor,
-      multi: true
-    }
+    
   ],
   exports: [ArticlesComponent],
 })

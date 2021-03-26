@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignInForm } from 'src/app/data/sign-in.interface';
+import { LogInResponse, SignInForm } from 'src/app/data/sign-in.interface';
 import { AuthorizationService } from '../authorization.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { AuthorizationService } from '../authorization.service';
 })
 export class SignInComponent implements OnInit {
   signInform: SignInForm = {
-    email: "",
-    password: "",
+    email: "eve.holt@reqres.in",
+    password: "cityslicka",
     rememberUser: false,
 
   }
@@ -21,11 +21,13 @@ export class SignInComponent implements OnInit {
     private _authorizationService: AuthorizationService) { }
 
   onSubmit(signIn: NgForm) {
-    if(this._authorizationService.login(this.signInform)) {
-      localStorage.setItem('token', "token107goneRight");
-      this._router.navigate(['/statistics']);
+    this._authorizationService.login(this.signInform).subscribe((response: LogInResponse) => {
+      console.log(response)
+    });
+      // localStorage.setItem('token', "token107goneRight");
+      // this._router.navigate(['/statistics']);
     }
-  }
+  
 
   ngOnInit(): void {
   }
