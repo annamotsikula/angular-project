@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { ArticleModule } from './articles/article.module';
 import { StatsModule } from './list-statistics/stats.module';
@@ -21,6 +22,9 @@ import { cacheInterceptor } from './core/cache.interceptor';
 import { AuthorizationInterceptor } from './core/authorization.interceptor';
 
 
+import {GetListComponent} from './virus-detect/get-list.component';
+
+
 
 
 @NgModule({
@@ -29,14 +33,19 @@ import { AuthorizationInterceptor } from './core/authorization.interceptor';
     ErrorpageComponent,
     HomeComponent,
     NavigationComponent,
+    GetListComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     AuthorizationModule,
     ArticleModule,
     StatsModule,
+    
+    CoreModule,
     RouterModule.forRoot([
       {
         path: 'home',
@@ -51,11 +60,17 @@ import { AuthorizationInterceptor } from './core/authorization.interceptor';
         pathMatch: 'full',
       },
       {
+        path: 'clients',
+        component: GetListComponent,
+        
+    },
+      
+      {
         path: '**',
         component: ErrorpageComponent,
       },
     ]),
-    CoreModule,
+    
     
   ], 
   providers: [
