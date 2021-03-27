@@ -4,17 +4,19 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class localStorageService {
+    
+    exists(TOKEN_Key: string): boolean {
+        return !!this.get(TOKEN_Key);
+    }
     private storage: any = localStorage;
     constructor() {}
 
+    get(key: string): any | undefined {
+            return JSON.parse(this.storage.getItem(key || undefined))
+        }
     set(key: string, value: any): void {
         this.storage.setItem(key, JSON.stringify(value))
     }
-    
-    get(key: string): any | undefined {
-        return JSON.parse(this.storage.getItem(key || undefined))
-    }
-
     delete(key: string): void {
         this.storage.removeItem(key)
     }
@@ -22,5 +24,6 @@ export class localStorageService {
     clear(): void {
         this.storage.clear()
     }
+
 
 }
