@@ -22,7 +22,6 @@ export class ArticlesComponent implements OnInit {
   constructor(private _ArticleService: ArticleService, private _router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.newTheme();
     const result: IResponse = this._router.snapshot.data['responseOfArticles'];
 
     this.wholeInfo = result.articles;

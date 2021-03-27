@@ -1,0 +1,61 @@
+<div class="b-example-divider"></div>
+
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="https://images.pexels.com/photos/3970330/pexels-photo-3970330.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block mx-lg-auto img-fluid" alt="" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Our data on COVID-19 vaccinations is updated each morning </h1>
+      <p class="lead">To bring this pandemic to an end, a large share of the world needs to be immune to the virus. The safest way to achieve this is with a vaccine. Vaccines are a technology that humanity has often relied on in the past to bring down the death toll of infectious diseases.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <button class="btn btn-primary btn-danger"
+            (click)="getPatients()"> Check </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-2">
+    <table class="table table-striped center" >
+    <thead>
+        <th> Gender </th>
+        <th> Location </th>
+        <th> Name </th>
+        <th> Email </th>
+        <th> Tel: </th>
+        <th> Image </th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let user of data | paginate: 
+        { 
+            id: 'listing_pagination',
+            itemsPerPage: 10,
+            currentPage: currentPageNumber,
+            totalItems: totalUsers 
+        }">
+        <td> {{user.gender}}</td>
+        <td> {{user.location.city}} , {{user.location.state}} , {{user.location.country}}</td>
+        <td> {{user.name.first}} {{user.name.last}}</td>
+        <td> {{user.email}}</td>
+        <td> {{user.phone.toString()}}</td>
+        <td> <img src="{{user.picture.medium}}" alt=""></td>
+    </tbody>
+</table>
+
+<div class="pagination justify-content-center">
+    <pagination-controls 
+                    id="listing_pagination"
+                      (pageChange)="currentPageNumber=$event"
+                      maxSize="9"
+                      directionLinks="true"
+                      autoHide="true"
+                      responsive="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      >
+    </pagination-controls>
+</div>
+
+</div>
+
+
