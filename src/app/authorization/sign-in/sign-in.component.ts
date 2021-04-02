@@ -20,12 +20,13 @@ export class SignInComponent implements OnInit {
     private _router: Router,
     private _authorizationService: AuthorizationService) { }
 
-  onSubmit(signIn: NgForm) {
-    this._authorizationService.login(this.signInform).subscribe((response: LogInResponse) => {
-      console.log(response)
-    });
-      // localStorage.setItem('token', "token107goneRight");
-      // this._router.navigate(['/statistics']);
+    onSubmit(signIn: NgForm) {
+    this._authorizationService.login(this.signInform).subscribe((AuthSuccessful: boolean) => {
+      console.log(AuthSuccessful);
+    if(AuthSuccessful) {
+      this._router.navigate(['/authorization/virus-detect'])
+    }
+  });
     }
   
 

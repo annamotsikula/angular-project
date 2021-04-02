@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-//import {catchError} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import { ArticleService } from './articles.service';
 import {IResponse, IArticle} from './articles';
 import { FormsFilter } from '../data/filter-data.interface';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -22,7 +22,7 @@ export class ArticleResolver implements Resolve<IResponse> {
         const theme: string = new URLSearchParams(formFilter as any).toString();
 
     return this._service.getAllArticles(theme)
-    //.pipe(catchError((err)=>{of(err)}));
+
     }
 
 }

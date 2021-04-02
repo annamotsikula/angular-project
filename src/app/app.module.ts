@@ -22,9 +22,7 @@ import { cacheInterceptor } from './core/cache.interceptor';
 import { AuthorizationInterceptor } from './core/authorization.interceptor';
 
 
-import {GetListComponent} from './virus-detect/get-list.component';
-
-
+import {GetListComponent} from './authorization/virus-detect/get-list.component';
 
 
 @NgModule({
@@ -34,6 +32,7 @@ import {GetListComponent} from './virus-detect/get-list.component';
     HomeComponent,
     NavigationComponent,
     GetListComponent
+    
     
   ],
   imports: [
@@ -59,11 +58,7 @@ import {GetListComponent} from './virus-detect/get-list.component';
         redirectTo: 'home',
         pathMatch: 'full',
       },
-      {
-        path: 'clients',
-        component: GetListComponent,
-        
-    },
+      
       
       {
         path: '**',

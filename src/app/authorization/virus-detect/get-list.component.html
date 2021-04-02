@@ -28,7 +28,7 @@
     <tbody>
         <tr *ngFor = "let user of data | paginate: 
         { 
-            id: 'listing_pagination',
+            id: 'listusers',
             itemsPerPage: 10,
             currentPage: currentPageNumber,
             totalItems: totalUsers 
@@ -44,7 +44,7 @@
 
 <div class="pagination justify-content-center">
     <pagination-controls 
-                    id="listing_pagination"
+                    id="listusers"
                       (pageChange)="currentPageNumber=$event"
                       maxSize="9"
                       directionLinks="true"
