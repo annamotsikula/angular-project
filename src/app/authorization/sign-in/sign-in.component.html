@@ -1,39 +1,49 @@
-<div class="row">
-    <div class="my-4 text-center">
-        <h1>Sign In</h1>
-    </div>
-    <div class="col-6 mx-auto">
-        <form #signIn="ngForm" (ngSubmit)="onSubmit(signIn)">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email"
-                        class="form-control" 
-                        id="email"
-                        name="email"
-                        [(ngModel)]="signInform.email">
-
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" 
-                        class="form-control" 
-                        name="password" 
-                        id="password"
-                        [(ngModel)]="signInform.password">
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" 
-                        class="form-check-input"
-                        [value]="true" 
-                        id="rememberUser"
-                        name="rememberUser"
-                        [(ngModel)]="signInform.rememberUser">
-                <label class="form-check-label" 
-                        for="rememberUser">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
+<div class=" row col-4">
+    <div id="container">
+        
+        <div class="link">
+          <h3 class="text-danger"> Warning </h3>
+          
+          <span class="tip">
+            This is a beta version. <br> The tool is still a prototype in development. The main goal of this webpage is for the tool to be tested by the partners and collecting feedback for further improvements.
+            </span>
+        </div>
+      </div>
+</div>
+<div class="row col-4 mx-auto box">
+    
+    <main class="form-signin text-center mt-4">
+      <form #signIn="ngForm" (ngSubmit)="onSubmit(signIn)">
+        <img class="mb-2" src="https://www.sc.edu/imgs/callout/icon_germ.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+       
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="signInform.email">
+          <label for="email" class="form-label">Email address</label>
+        </div>
+        <hr>
+        <div class="form-floating">
+            <input type="password" 
+            class="form-control" 
+            name="password" 
+            id="password"
+            [(ngModel)]="signInform.password">
+        
+            <label for="password" class="form-label">Password</label>
+        </div>
+    
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <hr>
+        <a class="nav-link" [routerLink]="['/authorization/sign-up']">Sign Up</a>
+        <p class="mt-2 text-muted">&copy; annamotsikula</p>
+      </form>
+    </main>
+    
+    
+        
 </div>

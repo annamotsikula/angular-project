@@ -8,10 +8,18 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
           <a class="nav-link" [routerLink]="['/statistics']">Statistics</a>
-          <a class="nav-link" [routerLink]="['/authorization/account']">Account</a>
+          
           <a class="nav-link" [routerLink]="['/authorization/virus-detect']">COV+++</a>
           
         </div>
       </div>
+      
+        <div class="navbar-nav">
+          <a class="nav-link" [routerLink]="['/authorization/account']">Account</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/authorization/sign-up']"> Sign Up</a>
+          <a class="nav-link" (click)="forLogOut($event)"> Log Out</a>
+          
+        </div>
+      
     </div>
   </nav>

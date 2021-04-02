@@ -10,8 +10,7 @@ export class AuthorizationGuard implements CanActivate {
   constructor(private _router: Router, private authorizationService: AuthorizationService ){}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log("aaaaaa")
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree { 
       if( !this.authorizationService.AuthSuccessful()) {
       
         this._router.navigate(['/authorization/sign-in']);

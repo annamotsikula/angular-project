@@ -5,11 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class localStorageService {
     
+    private storage: any = localStorage;
+    
+    constructor() {}
+
     exists(TOKEN_Key: string): boolean {
         return !!this.get(TOKEN_Key);
     }
-    private storage: any = localStorage;
-    constructor() {}
 
     get(key: string): any | undefined {
             return JSON.parse(this.storage.getItem(key || undefined))
