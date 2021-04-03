@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from './articles.service';
 import {IResponse, IArticle} from './articles';
 import { NgForm } from "@angular/forms";
+
+import {ActivatedRoute, Router} from '@angular/router'
 import { FormsFilter } from '../data/filter-data.interface';
-import {ActivatedRoute} from '@angular/router'
 
 
 @Component({
@@ -13,23 +14,35 @@ import {ActivatedRoute} from '@angular/router'
 })
 export class ArticlesComponent implements OnInit {
   wholeInfo: IArticle[] = [];
-  formFilter: FormsFilter = {
-    qInTitle: "covid19",
-    pageSize: 20,
-    page: 1
-
-  };
-  constructor(private _ArticleService: ArticleService, private _router: ActivatedRoute) { }
+  formFilter: FormsFilter = this._ArticleService.formFilter;
+  
+  constructor(private _ArticleService: ArticleService, private _router: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
     const result: IResponse = this._router.snapshot.data['responseOfArticles'];
 
     this.wholeInfo = result.articles;
+    
   }
   private newTheme() {
+
     const theme: string = new URLSearchParams(this.formFilter as any).toString();
+    
+    const paramsInUrl = {
+      ...this.formFilter,
+      title: this.formFilter.qInTitle,
+      page: this.formFilter.page,
+      pageSize: this.formFilter.pageSize
+    }
+    this.route.navigate([], {
+      queryParamsHandling: 'merge',
+      queryParams: paramsInUrl,
+      replaceUrl: true,
+
+    })
+
+  
     this._ArticleService.getAllArticles(theme).subscribe((res: IResponse) => {
-      console.log(res);
       if (res.status = 'ok'){
         this.wholeInfo = res.articles;
       }

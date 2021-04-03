@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 
 import { ListStatistics } from '../list-statistics/list-statistics.component';
 import { DetailsComponent } from '../details/details.component';
+import { AuthorizationGuard } from '../authorization.guard';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { DetailsComponent } from '../details/details.component';
       {
         path: 'statistics',
         component: ListStatistics,
+        canActivate: [AuthorizationGuard]
       },
       {
         path: 'infodetails',

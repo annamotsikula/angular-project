@@ -15,6 +15,7 @@ import { TOKEN_Key, REQRES_URL, EXPIRE_TIME_KEY, REFRESH_KEY } from 'src/config'
   providedIn: 'root'
 })
 export class AuthorizationService {
+  redirect: string = '';
 
   constructor(private locstorageService:localStorageService, private http:HttpClient) { }
 

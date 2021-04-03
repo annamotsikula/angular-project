@@ -24,7 +24,12 @@ export class SignInComponent implements OnInit {
     this._authorizationService.login(this.signInform).subscribe((AuthSuccessful: boolean) => {
       console.log(AuthSuccessful);
     if(AuthSuccessful) {
-      this._router.navigate(['/authorization/virus-detect'])
+      if(this._authorizationService.redirect !== '') {
+        this._router.navigateByUrl(this._authorizationService.redirect);
+      } else {
+        this._router.navigate(['/authorization/virus-detect'])
+      }
+      
     }
   });
     }

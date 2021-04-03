@@ -3,12 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { IResponse } from './articles';
 import { Observable } from 'rxjs';
 import { baseUrl } from "../../config";
+import { FormsFilter } from '../data/filter-data.interface';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ArticleService {
     private _baseUrl: string = baseUrl;
+    public formFilter: FormsFilter = {
+        qInTitle: "covid19",
+        pageSize: 20,
+        page: 1
+      };
     
  
     constructor(private http:HttpClient) {}

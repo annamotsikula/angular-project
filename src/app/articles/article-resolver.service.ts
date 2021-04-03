@@ -13,10 +13,18 @@ import { catchError } from 'rxjs/operators';
 export class ArticleResolver implements Resolve<IResponse> {
     constructor(private _service: ArticleService) {}
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IResponse> {
+        const page: any = route.queryParamMap.get('page') || 1;
+        const pageSize: any = route.queryParamMap.get('pageSize') || 20;
+        const qInTitle: any = route.queryParamMap.get('title') || 'covid19';
+        const sortBy: any = route.queryParamMap.get('Popularity') || "";
+
+
+
         const formFilter: FormsFilter = {
-            qInTitle: "covid19",
-            pageSize: 20,
-            page: 1
+            qInTitle,
+            pageSize,
+            page,
+            sortBy
         
           };
         const theme: string = new URLSearchParams(formFilter as any).toString();
